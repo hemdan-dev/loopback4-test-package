@@ -11,11 +11,14 @@ const repositories_1 = require("./repositories");
 const sequence_1 = require("./sequence");
 //import {ValidatorService, CalendarEventService} from './services';
 let TestComponent = class TestComponent {
-    constructor(application, TestConfig) {
+    constructor(application, coreConfig, expressMiddlewares) {
         this.application = application;
-        this.TestConfig = TestConfig;
+        this.coreConfig = coreConfig;
+        this.expressMiddlewares = expressMiddlewares;
         this.providers = {};
         this.bindings = [];
+        const middlewares = [];
+        this.application.bind(keys_1.TestSecurityBindings.EXPRESS_MIDDLEWARES).to(middlewares);
         this.bindings = [
         /*createServiceBinding(ValidatorService),
         createServiceBinding(CalendarEventService),
@@ -77,8 +80,9 @@ let TestComponent = class TestComponent {
 };
 TestComponent = tslib_1.__decorate([
     tslib_1.__param(0, core_1.inject(core_1.CoreBindings.APPLICATION_INSTANCE)),
-    tslib_1.__param(1, core_1.inject(keys_1.TestSecurityBindings.Config, { optional: true })),
-    tslib_1.__metadata("design:paramtypes", [rest_1.RestApplication, Object])
+    tslib_1.__param(1, core_1.inject(keys_1.TestSecurityBindings.config, { optional: true })),
+    tslib_1.__param(2, core_1.inject(keys_1.TestSecurityBindings.EXPRESS_MIDDLEWARES, { optional: true })),
+    tslib_1.__metadata("design:paramtypes", [rest_1.RestApplication, Object, Array])
 ], TestComponent);
 exports.TestComponent = TestComponent;
 exports.OPERATION_SECURITY_SPEC = [{ HTTPBearer: [] }];

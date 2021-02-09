@@ -8,7 +8,7 @@ import {
   ProviderMap,
 } from '@loopback/core';
 import { Class, Model, Repository } from '@loopback/repository';
-import { RestApplication } from '@loopback/rest';
+import { ExpressRequestHandler, RestApplication } from '@loopback/rest';
 import {
   RoleController,
 } from './controllers';
@@ -21,16 +21,22 @@ import {
 } from './repositories';
 import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
 import { MySequence } from './sequence';
-import { TestAction } from '.';
+import { CoreConfig, TestAction } from '.';
 //import {ValidatorService, CalendarEventService} from './services';
 
 export class TestComponent implements Component {
   constructor(
     @inject(CoreBindings.APPLICATION_INSTANCE)
     private readonly application: RestApplication,
-    @inject(TestSecurityBindings.Config, { optional: true })
-    private readonly TestConfig?: TestAction,
+    @inject(TestSecurityBindings.config, { optional: true })
+    private readonly coreConfig: CoreConfig,
+    @inject(TestSecurityBindings.EXPRESS_MIDDLEWARES, { optional: true })
+    private readonly expressMiddlewares: ExpressRequestHandler[],
+    /*@inject(TestSecurityBindings.Config, { optional: true })
+    private readonly TestConfig?: TestAction,*/
   ) {
+    const middlewares: any = [];
+    this.application.bind(TestSecurityBindings.EXPRESS_MIDDLEWARES).to(middlewares);
     this.bindings = [
       /*createServiceBinding(ValidatorService),
       createServiceBinding(CalendarEventService),

@@ -1,12 +1,13 @@
 import { Binding, Component, ControllerClass, ProviderMap } from '@loopback/core';
 import { Class, Model, Repository } from '@loopback/repository';
-import { RestApplication } from '@loopback/rest';
+import { ExpressRequestHandler, RestApplication } from '@loopback/rest';
 import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
-import { TestAction } from '.';
+import { CoreConfig } from '.';
 export declare class TestComponent implements Component {
     private readonly application;
-    private readonly TestConfig?;
-    constructor(application: RestApplication, TestConfig?: TestAction | undefined);
+    private readonly coreConfig;
+    private readonly expressMiddlewares;
+    constructor(application: RestApplication, coreConfig: CoreConfig, expressMiddlewares: ExpressRequestHandler[]);
     providers?: ProviderMap;
     bindings?: Binding[];
     /**
