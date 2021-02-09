@@ -1,10 +1,11 @@
 import { Getter, inject } from '@loopback/core';
 import { DefaultCrudRepository, juggler } from '@loopback/repository';
-import { Role } from '../models';
+import { Role, RoleWithRelations } from '../models';
 
 export class RoleRepository extends DefaultCrudRepository<
   Role,
-  typeof Role.prototype.id
+  typeof Role.prototype.id,
+  RoleWithRelations
   > {
   constructor(
     @inject('datasources.testPackage') dataSource: juggler.DataSource,
