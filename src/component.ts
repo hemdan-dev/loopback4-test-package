@@ -10,14 +10,14 @@ import {
 import { Class, Model, Repository } from '@loopback/repository';
 import { ExpressRequestHandler, RestApplication } from '@loopback/rest';
 import {
-  RoleController,
+  RoleTestController,
 } from './controllers';
 import { TestSecurityBindings } from './keys';
 import {
-  Role,
+  RoleTest,
 } from './models';
 import {
-  RoleRepository,
+  RoleTestRepository,
 } from './repositories';
 import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
 import { MySequence } from './sequence';
@@ -69,17 +69,17 @@ export class TestComponent implements Component {
     this.setupSequence(this.bindings)
 
     this.repositories = [
-      RoleRepository,
+      RoleTestRepository,
     ];
 
     this.models = [
-      Role,
+      RoleTest,
     ];
 
     this.providers = {};
 
     this.controllers = [
-      RoleController,
+      RoleTestController,
     ];
   }
 

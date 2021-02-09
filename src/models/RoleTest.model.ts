@@ -3,7 +3,7 @@ import { Entity, model, property } from '@loopback/repository';
 @model({
   name: 'test_roles',
 })
-export class Role extends Entity {
+export class RoleTest extends Entity {
   @property({
     type: 'string',
     id: true,
@@ -22,8 +22,8 @@ export class Role extends Entity {
   })
   permissions: string[];
 
-  constructor(data?: Partial<Role>) {
+  constructor(data?: Partial<RoleTest>) {
     super(data);
   }
 }
-export type RoleWithRelations = Role;
+export type RoleTestWithRelations = RoleTest;

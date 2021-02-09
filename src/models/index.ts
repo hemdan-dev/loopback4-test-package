@@ -1,2 +1,2 @@
-export * from './role.model';
+export * from './RoleTest.model';
 

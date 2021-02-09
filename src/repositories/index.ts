@@ -1,1 +1,1 @@
-export * from './role.repository';
+export * from './RoleTest.repository';

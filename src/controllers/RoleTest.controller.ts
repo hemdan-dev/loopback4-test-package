@@ -18,13 +18,13 @@ import {
   requestBody,
   HttpErrors,
 } from '@loopback/rest';
-import { Role } from '../models';
-import { RoleRepository } from '../repositories';
+import { RoleTest } from '../models';
+import { RoleTestRepository } from '../repositories';
 
-export class RoleController {
+export class RoleTestController {
   constructor(
-    @repository(RoleRepository)
-    public roleRepository: RoleRepository,
+    @repository(RoleTestRepository)
+    public roleRepository: RoleTestRepository,
   ) { }
 
 
@@ -36,7 +36,7 @@ export class RoleController {
           'application/json': {
             schema: {
               type: 'array',
-              items: getModelSchemaRef(Role, { includeRelations: true }),
+              items: getModelSchemaRef(RoleTest, { includeRelations: true }),
             },
           },
         },
@@ -44,8 +44,8 @@ export class RoleController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Role)) filter?: Filter<Role>,
-  ): Promise<Role[]> {
+    @param.query.object('filter', getFilterSchemaFor(RoleTest)) filter?: Filter<RoleTest>,
+  ): Promise<RoleTest[]> {
     return this.roleRepository.find(filter);
   }
 }

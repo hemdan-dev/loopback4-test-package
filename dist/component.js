@@ -46,14 +46,14 @@ let TestComponent = class TestComponent {
         }*/
         this.setupSequence(this.bindings);
         this.repositories = [
-            repositories_1.RoleRepository,
+            repositories_1.RoleTestRepository,
         ];
         this.models = [
-            models_1.Role,
+            models_1.RoleTest,
         ];
         this.providers = {};
         this.controllers = [
-            controllers_1.RoleController,
+            controllers_1.RoleTestController,
         ];
     }
     /**
