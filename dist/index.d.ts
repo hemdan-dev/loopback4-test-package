@@ -1,5 +1,5 @@
 export * from './component';
+export * from './repositories';
+export * from './models';
 export * from './keys';
-export * from './providers';
 export * from './types';
-export * from './decorators/test.decorator';

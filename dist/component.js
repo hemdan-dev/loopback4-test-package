@@ -5,12 +5,15 @@ const tslib_1 = require("tslib");
 const core_1 = require("@loopback/core");
 const rest_1 = require("@loopback/rest");
 const controllers_1 = require("./controllers");
+const keys_1 = require("./keys");
 const models_1 = require("./models");
 const repositories_1 = require("./repositories");
+const sequence_1 = require("./sequence");
 //import {ValidatorService, CalendarEventService} from './services';
 let TestComponent = class TestComponent {
-    constructor(application) {
+    constructor(application, TestConfig) {
         this.application = application;
+        this.TestConfig = TestConfig;
         this.providers = {};
         this.bindings = [];
         this.bindings = [
@@ -74,10 +77,10 @@ let TestComponent = class TestComponent {
 };
 TestComponent = tslib_1.__decorate([
     tslib_1.__param(0, core_1.inject(core_1.CoreBindings.APPLICATION_INSTANCE)),
-    tslib_1.__metadata("design:paramtypes", [rest_1.RestApplication])
+    tslib_1.__param(1, core_1.inject(keys_1.TestSecurityBindings.Config, { optional: true })),
+    tslib_1.__metadata("design:paramtypes", [rest_1.RestApplication, Object])
 ], TestComponent);
 exports.TestComponent = TestComponent;
-const sequence_1 = require("./sequence");
 exports.OPERATION_SECURITY_SPEC = [{ HTTPBearer: [] }];
 exports.SECURITY_SCHEME_SPEC = {
     HTTPBearer: {

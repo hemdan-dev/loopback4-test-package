@@ -19,14 +19,17 @@ import {
 import {
   RoleRepository,
 } from './repositories';
+import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
+import { MySequence } from './sequence';
+import { TestAction } from '.';
 //import {ValidatorService, CalendarEventService} from './services';
 
 export class TestComponent implements Component {
   constructor(
     @inject(CoreBindings.APPLICATION_INSTANCE)
     private readonly application: RestApplication,
-    /*@inject(SchedulerBindings.Config, { optional: true })
-    private readonly schedulerConfig?: IServiceConfig,*/
+    @inject(TestSecurityBindings.Config, { optional: true })
+    private readonly TestConfig?: TestAction,
   ) {
     this.bindings = [
       /*createServiceBinding(ValidatorService),
@@ -118,8 +121,6 @@ export class TestComponent implements Component {
   }
 }
 
-import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
-import { MySequence } from './sequence';
 export const OPERATION_SECURITY_SPEC = [{ HTTPBearer: [] }];
 export type SecuritySchemeObjects = {
   [securityScheme: string]: SecuritySchemeObject | ReferenceObject;

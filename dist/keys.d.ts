@@ -1,8 +1,5 @@
-import { BindingKey, MetadataAccessor } from '@loopback/core';
-import { TestAction, TestOptions, TestMetadata } from './types';
+import { BindingKey } from "@loopback/core";
+import { TestAction } from ".";
 export declare namespace TestSecurityBindings {
-    const Test_SECURITY_ACTION: BindingKey<TestAction>;
-    const METADATA: BindingKey<TestMetadata | undefined>;
-    const CONFIG: BindingKey<TestOptions | null>;
+    const Config: BindingKey<TestAction | null>;
 }
-export declare const Test_METADATA_ACCESSOR: MetadataAccessor<TestMetadata, MethodDecorator>;

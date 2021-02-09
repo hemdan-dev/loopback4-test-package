@@ -1,9 +1,12 @@
 import { Binding, Component, ControllerClass, ProviderMap } from '@loopback/core';
 import { Class, Model, Repository } from '@loopback/repository';
 import { RestApplication } from '@loopback/rest';
+import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
+import { TestAction } from '.';
 export declare class TestComponent implements Component {
     private readonly application;
-    constructor(application: RestApplication);
+    private readonly TestConfig?;
+    constructor(application: RestApplication, TestConfig?: TestAction | undefined);
     providers?: ProviderMap;
     bindings?: Binding[];
     /**
@@ -27,7 +30,6 @@ export declare class TestComponent implements Component {
      */
     setupSequence(bindings: Binding[]): void;
 }
-import { ReferenceObject, SecuritySchemeObject } from '@loopback/openapi-v3';
 export declare const OPERATION_SECURITY_SPEC: {
     HTTPBearer: never[];
 }[];
