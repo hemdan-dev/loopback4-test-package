@@ -4,7 +4,7 @@ exports.MySequence = void 0;
 const tslib_1 = require("tslib");
 const context_1 = require("@loopback/context");
 const rest_1 = require("@loopback/rest");
-const _1 = require(".");
+const keys_1 = require("./keys");
 const SequenceActions = rest_1.RestBindings.SequenceActions;
 let MySequence = class MySequence {
     constructor(findRoute, parseParams, invoke, send, reject) {
@@ -17,8 +17,14 @@ let MySequence = class MySequence {
         this.expressMiddlewares = [];
     }
     async handle(context) {
+        var _a;
         try {
             const { request, response } = context;
+            if ((_a = this.expressMiddlewares) === null || _a === void 0 ? void 0 : _a.length) {
+                const responseGenerated = await this.invokeMiddleware(context, this.expressMiddlewares);
+                if (responseGenerated)
+                    return;
+            }
             const finished = await this.invokeMiddleware(context);
             if (finished)
                 return;
@@ -39,7 +45,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", Function)
 ], MySequence.prototype, "invokeMiddleware", void 0);
 tslib_1.__decorate([
-    context_1.inject(_1.TestSecurityBindings.EXPRESS_MIDDLEWARES, { optional: true }),
+    context_1.inject(keys_1.TestSecurityBindings.EXPRESS_MIDDLEWARES, { optional: true }),
     tslib_1.__metadata("design:type", Array)
 ], MySequence.prototype, "expressMiddlewares", void 0);
 MySequence = tslib_1.__decorate([

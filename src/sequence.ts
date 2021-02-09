@@ -11,7 +11,7 @@ import {
   InvokeMiddleware,
   ExpressRequestHandler,
 } from '@loopback/rest';
-import { TestSecurityBindings } from '.';
+import { TestSecurityBindings } from './keys';
 
 const SequenceActions = RestBindings.SequenceActions;
 
@@ -32,6 +32,13 @@ export class MySequence implements SequenceHandler {
   async handle(context: RequestContext) {
     try {
       const { request, response } = context;
+      if (this.expressMiddlewares?.length) {
+        const responseGenerated = await this.invokeMiddleware(
+          context,
+          this.expressMiddlewares,
+        );
+        if (responseGenerated) return;
+      }
       const finished = await this.invokeMiddleware(context);
       if (finished) return;
       console.log("new request")

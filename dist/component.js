@@ -44,6 +44,7 @@ let TestComponent = class TestComponent {
           // Mount default sequence if needed
           this.setupSequence(this.bindings);
         }*/
+        this.setupSequence(this.bindings);
         this.repositories = [
             repositories_1.RoleRepository,
         ];

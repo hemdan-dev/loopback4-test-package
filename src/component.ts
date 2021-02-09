@@ -66,6 +66,8 @@ export class TestComponent implements Component {
       this.setupSequence(this.bindings);
     }*/
 
+    this.setupSequence(this.bindings)
+
     this.repositories = [
       RoleRepository,
     ];
