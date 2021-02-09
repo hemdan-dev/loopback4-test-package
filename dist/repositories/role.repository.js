@@ -11,7 +11,7 @@ let RoleRepository = class RoleRepository extends repository_1.DefaultCrudReposi
     }
 };
 RoleRepository = tslib_1.__decorate([
-    tslib_1.__param(0, core_1.inject(`datasources.mySql`)),
+    tslib_1.__param(0, core_1.inject('datasources.testPackage')),
     tslib_1.__metadata("design:paramtypes", [repository_1.juggler.DataSource])
 ], RoleRepository);
 exports.RoleRepository = RoleRepository;

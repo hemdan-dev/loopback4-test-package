@@ -31,7 +31,7 @@ tslib_1.__decorate([
 ], Role.prototype, "permissions", void 0);
 Role = tslib_1.__decorate([
     repository_1.model({
-        name: 'roles',
+        name: 'test_roles',
     }),
     tslib_1.__metadata("design:paramtypes", [Object])
 ], Role);
