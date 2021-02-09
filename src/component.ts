@@ -9,9 +9,9 @@ import {
 } from '@loopback/core';
 import { Class, Model, Repository } from '@loopback/repository';
 import { RestApplication } from '@loopback/rest';
-/*import {
-  AttachmentController,
-} from './controllers';*/
+import {
+  RoleController,
+} from './controllers';
 import { TestSecurityBindings } from './keys';
 import {
   Role,
@@ -68,7 +68,7 @@ export class TestComponent implements Component {
     this.providers = {};
 
     this.controllers = [
-      //
+      RoleController,
     ];
   }
 

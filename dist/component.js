@@ -4,6 +4,7 @@ exports.SECURITY_SCHEME_SPEC = exports.OPERATION_SECURITY_SPEC = exports.TestCom
 const tslib_1 = require("tslib");
 const core_1 = require("@loopback/core");
 const rest_1 = require("@loopback/rest");
+const controllers_1 = require("./controllers");
 const models_1 = require("./models");
 const repositories_1 = require("./repositories");
 //import {ValidatorService, CalendarEventService} from './services';
@@ -45,7 +46,7 @@ let TestComponent = class TestComponent {
         ];
         this.providers = {};
         this.controllers = [
-        //
+            controllers_1.RoleController,
         ];
     }
     /**

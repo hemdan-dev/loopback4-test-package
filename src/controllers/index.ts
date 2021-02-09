@@ -1,4 +1,1 @@
-
-export const controllers = [
-  //
-];
+export * from './role.controller';

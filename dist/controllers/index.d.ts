@@ -1,1 +1,1 @@
-export declare const controllers: never[];
+export * from './role.controller';

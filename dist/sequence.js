@@ -20,6 +20,7 @@ let MySequence = class MySequence {
             const finished = await this.invokeMiddleware(context);
             if (finished)
                 return;
+            console.log("new request");
             const route = this.findRoute(request);
             const args = await this.parseParams(request, route);
             //result of loopback requests
