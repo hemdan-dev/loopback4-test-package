@@ -9,13 +9,17 @@ import {
   Send,
   SequenceHandler,
   InvokeMiddleware,
+  ExpressRequestHandler,
 } from '@loopback/rest';
+import { TestSecurityBindings } from '.';
 
 const SequenceActions = RestBindings.SequenceActions;
 
 export class MySequence implements SequenceHandler {
   @inject(SequenceActions.INVOKE_MIDDLEWARE, { optional: true })
   protected invokeMiddleware: InvokeMiddleware = () => false;
+  @inject(TestSecurityBindings.EXPRESS_MIDDLEWARES, { optional: true })
+  protected expressMiddlewares: ExpressRequestHandler[] = [];
 
   constructor(
     @inject(SequenceActions.FIND_ROUTE) protected findRoute: FindRoute,
